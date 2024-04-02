@@ -28,6 +28,15 @@ router.get('/employees',(req,res)=>{
  })
 
 
+ router.post('/edit-employee',(req,res)=>{
+    const {id} = req.params
+    EmployeeModel.findByIdAndUpdate(id)
+    .then((result)=>{
+        return res.json(result)
+    }).catch(err => console.log(err))
+ })
+
+
 router.post('/delete-emp',(req,res)=>{
     const id = req.params.id
     EmployeeModel.findByIdAndDelete(id)
